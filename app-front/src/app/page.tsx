@@ -25,7 +25,9 @@ export default async function IndexPage() {
 
   return (
     <main className="container min-h-screen w-full p-8">
-      <h1 className="text-4xl font-bold mb-8">{homepage?.title}</h1>
+      <h1 className="text-4xl font-bold mb-8 text-primary">
+        {homepage?.title}
+      </h1>
       {homepage?.actualitesSection && (
         <section className="mb-12">
           <h2 className="text-3xl font-semibold mb-6">

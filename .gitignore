@@ -24,6 +24,7 @@
 # Sanity Studio
 /sanity-studio/.next/
 /sanity-studio/out/
+/sanity-studio/dist/
 
 # Production
 /app-front/build
