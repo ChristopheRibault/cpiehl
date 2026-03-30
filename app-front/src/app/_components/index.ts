@@ -1,1 +1,2 @@
-export { Section } from "./Section";
+export { Section } from "./Section/Section";
+export { NewsCard } from "./NewsCard/NewsCard";
