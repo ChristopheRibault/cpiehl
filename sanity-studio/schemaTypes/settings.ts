@@ -35,11 +35,6 @@ export default defineType({
       title: 'Couleur secondaire',
       type: 'color',
     }),
-    defineField({
-      name: 'tertiaryColor',
-      title: 'Couleur tertiaire',
-      type: 'color',
-    }),
   ],
   // @ts-expect-error
   __experimental_actions: ['update', 'publish'], // singleton

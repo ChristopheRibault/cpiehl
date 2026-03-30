@@ -1,6 +1,7 @@
 import { client } from "@/sanity/client";
 import Image from "next/image";
 import Link from "next/link";
+import { Section } from "./_components";
 
 const HOMEPAGE_QUERY = `*[_type == "homepage"][0]{
   _id,
@@ -24,16 +25,10 @@ export default async function IndexPage() {
   console.log(homepage);
 
   return (
-    <main className="container min-h-screen w-full p-8">
-      <h1 className="text-4xl font-bold mb-8 text-primary">
-        {homepage?.title}
-      </h1>
+    <main className="min-h-screen w-full">
       {homepage?.actualitesSection && (
-        <section className="mb-12">
-          <h2 className="text-3xl font-semibold mb-6">
-            {homepage.actualitesSection.title}
-          </h2>
-          <div className="flex flex-row flex-wrap gap-8">
+        <Section title={homepage.actualitesSection.title}>
+          <div className="flex flex-row flex-wrap gap-8 justify-center">
             {homepage.actualitesSection.actualites?.map((actualite: any) => (
               <div key={actualite._id} className="flex flex-col gap-4 p-4 w-64">
                 {actualite.image?.asset?.url && (
@@ -59,7 +54,7 @@ export default async function IndexPage() {
               </div>
             ))}
           </div>
-        </section>
+        </Section>
       )}
     </main>
   );

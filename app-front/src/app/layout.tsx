@@ -44,9 +44,6 @@ export default async function RootLayout({
             ...(settings?.secondaryColor && {
               "--secondary-color": settings.secondaryColor.hex,
             }),
-            ...(settings?.tertiaryColor && {
-              "--tertiary-color": settings.tertiaryColor.hex,
-            }),
           } as React.CSSProperties
         }
       >
