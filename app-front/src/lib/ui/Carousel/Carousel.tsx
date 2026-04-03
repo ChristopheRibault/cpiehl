@@ -13,9 +13,10 @@ interface CarouselProps {
   };
   autoplay?: boolean;
   autoplayDelay?: number;
+  withNavigation?: boolean;
 }
 
-export const Carousel = ({ children, options = {}, autoplay = true, autoplayDelay = 4000 }: CarouselProps) => {
+export const Carousel = ({ children, options = {}, autoplay = true, autoplayDelay = 4000, withNavigation = true }: CarouselProps) => {
   const autoplayPlugin = Autoplay({ delay: autoplayDelay, stopOnInteraction: true });
 
   const [emblaRef, emblaApi] = useEmblaCarousel({
@@ -59,16 +60,17 @@ export const Carousel = ({ children, options = {}, autoplay = true, autoplayDela
       </div>
 
       {/* Boutons de navigation */}
-      <div className="flex justify-center gap-4 mt-6">
-        <button
-          onClick={scrollPrev}
-          disabled={!canScrollPrev}
-          aria-label="Carousel précédent"
-          className="px-4 py-2 bg-primary text-white rounded-lg disabled:opacity-50 disabled:cursor-not-allowed hover:opacity-90 transition-opacity"
-        >
-          ←
-        </button>
-        <button
+      {withNavigation && (
+        <div className="flex justify-center gap-4 mt-6">
+          <button
+            onClick={scrollPrev}
+            disabled={!canScrollPrev}
+            aria-label="Carousel précédent"
+            className="px-4 py-2 bg-primary text-white rounded-lg disabled:opacity-50 disabled:cursor-not-allowed hover:opacity-90 transition-opacity"
+          >
+            ←
+          </button>
+          <button
           onClick={scrollNext}
           disabled={!canScrollNext}
           aria-label="Carousel suivant"
@@ -77,6 +79,7 @@ export const Carousel = ({ children, options = {}, autoplay = true, autoplayDela
           →
         </button>
       </div>
+      )}
     </div>
   );
 };

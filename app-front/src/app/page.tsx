@@ -1,12 +1,28 @@
 import { NewsCard, ProgramCard, Section, PartnerCard } from "./_components";
 import { getHomepage } from "@/sanity/homepage";
 import { Carousel } from "@/lib/ui";
+import Image from "next/image";
 
 export default async function Homepage() {
   const homepage = await getHomepage();
 
   return (
     <main className="min-h-screen w-full">
+      {homepage?.banner && (
+        <Carousel withNavigation={false}>
+          {homepage.banner.map((image, index) => (
+            <div key={image.asset.url} className="flex-[0_0_100%] h-32 md:h-48 lg:h-72 overflow-hidden relative">
+              <Image
+                src={image.asset.url}
+                alt={image.alt || `Banner ${index + 1}`}
+                className="w-full h-full object-cover"
+                fill
+                priority={index === 0}
+              />
+            </div>
+          ))}
+        </Carousel>
+      )}
       {homepage?.actualitesSection && (
         <Section title={homepage.actualitesSection.title}>
           <div className="flex flex-col lg:flex-row flex-wrap gap-8 justify-center items-center lg:items-start">

@@ -8,6 +8,7 @@ import { partnerSchema } from "./schemas/partner";
 const HOMEPAGE_QUERY = `*[_type == "homepage"][0]{
   _id,
   title,
+  banner[]{asset->{url}, alt},
   actualitesSection {
     title,
     actualites[]-> {
@@ -86,6 +87,12 @@ const contactSectionSchema = z.object({
 export const homepageSchema = z.object({
   _id: z.string(),
   title: z.string(),
+  banner: z.array(z.object({
+    asset: z.object({
+      url: z.url(),
+    }),
+    alt: z.string().optional().nullable(),
+  })).optional(),
   actualitesSection: actualitesSectionSchema.optional(),
   programSection: programSectionSchema.optional(),
   partnersSection: partnersSectionSchema.optional(),

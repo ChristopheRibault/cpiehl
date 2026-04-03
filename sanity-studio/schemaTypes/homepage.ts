@@ -12,6 +12,13 @@ export default defineType({
       validation: (Rule) => Rule.required().max(80),
     }),
     defineField({
+      name: 'banner',
+      title: 'Bannière',
+      type: 'array',
+      of: [{type: 'image'}],
+      description: 'Images de bannière pour la homepage',
+    }),
+    defineField({
       name: 'actualitesSection',
       title: 'Section Actualités',
       type: 'actualitesSection',
