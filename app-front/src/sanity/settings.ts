@@ -7,7 +7,7 @@ import { colorSchema } from "./schemas/color";
 // Schéma Zod pour le logo (asset)
 const logoSchema = z.object({
   asset: z.object({
-    url: z.string().url(),
+    url: z.url(),
   }),
 });
 
@@ -16,14 +16,14 @@ const logoSchema = z.object({
 export const siteSettingsSchema = z.object({
   siteTitle: z.string(),
   header: z.object({
-    logo: logoSchema.optional(),
+    logo: logoSchema,
   }),
   meta: z.object({
     shortTitle: z.string().optional(),
     siteDescription: z.string().optional(),
   }),
   chartColors: z.object({
-    primaryColor: colorSchema.optional(),
+    primaryColor: colorSchema,
     secondaryColor: colorSchema.optional(),
   }),
 });

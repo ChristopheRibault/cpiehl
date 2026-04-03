@@ -19,6 +19,7 @@ export default defineType({
           name: 'logo',
           title: 'Logo',
           type: 'image',
+          validation: (Rule) => Rule.required(),
         }),
       ],
     }),
@@ -48,6 +49,7 @@ export default defineType({
           name: 'primaryColor',
           title: 'Couleur principale',
           type: 'color',
+          validation: (Rule) => Rule.required(),
         }),
         defineField({
           name: 'secondaryColor',
