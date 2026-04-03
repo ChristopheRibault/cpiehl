@@ -1,17 +1,7 @@
 import homepage from './homepage'
-import actu from './actu'
-import actualitesSection from './actualitesSection'
 import settings from './settings'
-import program from './program'
-import programSection from './programSection'
 import page from './page'
+import {components} from './components'
+import {homePageSections} from './homePageSections'
 
-export const schemaTypes = [
-  homepage,
-  actu,
-  actualitesSection,
-  settings,
-  program,
-  programSection,
-  page,
-]
+export const schemaTypes = [homepage, settings, page, ...homePageSections, ...components]
