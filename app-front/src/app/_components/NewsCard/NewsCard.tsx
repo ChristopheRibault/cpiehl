@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export function NewsCard({ actualite }: { actualite: Actualite }) {
   return (
-    <article className="flex flex-col gap-4 p-4 w-64">
+    <article className="flex flex-col justify-center items-center gap-4 p-4 lg:w-64 w-max-lg">
       {actualite.image?.asset?.url && (
         <Link href={actualite.link ?? ""} target="_blank">
           <Image

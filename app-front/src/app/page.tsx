@@ -8,7 +8,7 @@ export default async function Homepage() {
     <main className="min-h-screen w-full">
       {homepage?.actualitesSection && (
         <Section title={homepage.actualitesSection.title}>
-          <div className="flex flex-row flex-wrap gap-8 justify-center">
+          <div className="flex flex-col lg:flex-row flex-wrap gap-8 justify-center items-center lg:items-start">
             {homepage.actualitesSection.actualites?.map((actualite) => (
               <NewsCard key={actualite._id} actualite={actualite} />
             ))}
@@ -17,7 +17,7 @@ export default async function Homepage() {
       )}
       {homepage?.programSection && (
         <Section title={homepage.programSection.title}>
-          <div className="flex flex-row flex-wrap gap-8 justify-center items-center">
+          <div className="flex flex-col gap-8 justify-center items-center">
             {homepage.programSection.programs?.map((program) => (
               <ProgramCard key={program._id} program={program} />
             ))}
