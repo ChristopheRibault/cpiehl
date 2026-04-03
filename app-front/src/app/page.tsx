@@ -36,6 +36,23 @@ export default async function Homepage() {
           </Carousel>
         </Section>
       )}
+      {homepage?.contactSection && (
+        <Section title={homepage.contactSection.title}>
+          <div className="flex flex-col gap-8 items-center w-lg">
+            <div className="flex flex-col justify-center items-start">
+              <h3 className="text-2xl font-bold mb-2">{homepage.contactSection.contactInfo.name}</h3>
+              {homepage.contactSection.contactInfo.address && (
+                <p>{homepage.contactSection.contactInfo.address}</p>
+              )}
+              {homepage.contactSection.contactInfo.address2 && (
+                <p>{homepage.contactSection.contactInfo.address2}</p>
+              )}
+              <p>{homepage.contactSection.contactInfo.email}</p>
+            </div>
+            <p>Tel : {homepage.contactSection.contactInfo.phone}</p>
+          </div>
+        </Section>
+      )}
     </main>
   );
 }

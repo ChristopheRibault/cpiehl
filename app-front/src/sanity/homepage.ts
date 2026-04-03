@@ -42,6 +42,16 @@ const HOMEPAGE_QUERY = `*[_type == "homepage"][0]{
       logo{asset->{url}, alt},
       link
     }
+  },
+  contactSection {
+    title,
+    contactInfo {
+      name,
+      email,
+      phone,
+      address,
+      address2
+    }
   }
 }`;
 
@@ -61,6 +71,17 @@ const partnersSectionSchema = z.object({
   partners: z.array(partnerSchema).optional(),
 });
 
+const contactSectionSchema = z.object({
+  title: z.string(),
+  contactInfo: z.object({
+    name: z.string(),
+    email: z.email(),
+    phone: z.string(),
+    address: z.string().optional(),
+    address2: z.string().optional(),
+  })
+});
+
 // Schéma principal homepage
 export const homepageSchema = z.object({
   _id: z.string(),
@@ -68,6 +89,7 @@ export const homepageSchema = z.object({
   actualitesSection: actualitesSectionSchema.optional(),
   programSection: programSectionSchema.optional(),
   partnersSection: partnersSectionSchema.optional(),
+  contactSection: contactSectionSchema.optional(),
 });
 
 export type Homepage = z.infer<typeof homepageSchema>;

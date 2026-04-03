@@ -29,6 +29,12 @@ export default defineType({
       type: 'partnersSection',
       description: 'Section avec titre et liste de partenaires',
     }),
+    defineField({
+      name: 'contactSection',
+      title: 'Section Contact',
+      type: 'contactSection',
+      description: 'Section avec titre et informations de contact',
+    }),
   ],
   // @ts-ignore
   __experimental_actions: ['update', 'publish'], // disable 'create' & 'delete'
