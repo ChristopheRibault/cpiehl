@@ -16,9 +16,9 @@ const geistMono = Geist_Mono({
 export async function generateMetadata(): Promise<Metadata> {
   const settings = await getSiteSettings();
   return {
-    title: settings?.shortTitle || "CPIE HL",
+    title: settings?.meta.shortTitle || "CPIE HL",
     description:
-      settings?.siteDescription || "Site de l'association CPIE Haut-Languedoc",
+      settings?.meta.siteDescription || "Site de l'association CPIE Haut-Languedoc",
   };
 }
 
@@ -38,11 +38,11 @@ export default async function RootLayout({
         style={
           {
             // Injection des couleurs Sanity dans les variables CSS (utilisation du champ .hex)
-            ...(settings?.primaryColor && {
-              "--primary-color": settings.primaryColor.hex,
+            ...(settings?.chartColors.primaryColor && {
+              "--primary-color": settings.chartColors.primaryColor.hex,
             }),
-            ...(settings?.secondaryColor && {
-              "--secondary-color": settings.secondaryColor.hex,
+            ...(settings?.chartColors.secondaryColor && {
+              "--secondary-color": settings.chartColors.secondaryColor.hex,
             }),
           } as React.CSSProperties
         }

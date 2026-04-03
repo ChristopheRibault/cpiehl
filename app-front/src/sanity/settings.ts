@@ -15,18 +15,24 @@ const logoSchema = z.object({
 // Schéma Zod principal pour les settings du site
 export const siteSettingsSchema = z.object({
   siteTitle: z.string(),
-  shortTitle: z.string().optional(),
-  siteDescription: z.string().optional(),
-  logo: logoSchema.optional(),
-  primaryColor: colorSchema.optional(),
-  secondaryColor: colorSchema.optional(),
+  header: z.object({
+    logo: logoSchema.optional(),
+  }),
+  meta: z.object({
+    shortTitle: z.string().optional(),
+    siteDescription: z.string().optional(),
+  }),
+  chartColors: z.object({
+    primaryColor: colorSchema.optional(),
+    secondaryColor: colorSchema.optional(),
+  }),
 });
 
 export type SiteSettings = z.infer<typeof siteSettingsSchema>;
 
 export async function getSiteSettings(): Promise<SiteSettings> {
   const data = await client.fetch(
-    `*[_type == "siteSettings"][0]{ siteTitle, shortTitle, siteDescription, logo{asset->{url}}, primaryColor, secondaryColor }`,
+    `*[_type == "siteSettings"][0]{ siteTitle, header{logo{asset->{url}}}, meta{shortTitle, siteDescription}, chartColors{primaryColor, secondaryColor} }`,
   );
   const parsed = siteSettingsSchema.safeParse(data);
   if (!parsed.success) {

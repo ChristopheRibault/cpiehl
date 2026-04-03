@@ -11,29 +11,50 @@ export default defineType({
       type: 'string',
     }),
     defineField({
-      name: 'shortTitle',
-      title: 'Titre court du site',
-      type: 'string',
+      name: 'header',
+      title: 'En-tête',
+      type: 'object',
+      fields: [
+        defineField({
+          name: 'logo',
+          title: 'Logo',
+          type: 'image',
+        }),
+      ],
     }),
     defineField({
-      name: 'siteDescription',
-      title: 'Description du site',
-      type: 'string',
+      name: 'meta',
+      title: 'Méta données',
+      type: 'object',
+      fields: [
+        defineField({
+          name: 'shortTitle',
+          title: 'Titre court du site',
+          type: 'string',
+        }),
+        defineField({
+          name: 'siteDescription',
+          title: 'Description du site',
+          type: 'string',
+        }),
+      ],
     }),
     defineField({
-      name: 'logo',
-      title: 'Logo',
-      type: 'image',
-    }),
-    defineField({
-      name: 'primaryColor',
-      title: 'Couleur principale',
-      type: 'color',
-    }),
-    defineField({
-      name: 'secondaryColor',
-      title: 'Couleur secondaire',
-      type: 'color',
+      name: 'chartColors',
+      title: 'Charte graphique',
+      type: 'object',
+      fields: [
+        defineField({
+          name: 'primaryColor',
+          title: 'Couleur principale',
+          type: 'color',
+        }),
+        defineField({
+          name: 'secondaryColor',
+          title: 'Couleur secondaire',
+          type: 'color',
+        }),
+      ],
     }),
   ],
   // @ts-expect-error
