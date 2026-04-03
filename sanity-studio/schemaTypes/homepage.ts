@@ -17,6 +17,12 @@ export default defineType({
       type: 'actualitesSection',
       description: 'Section avec titre et liste d’actualités',
     }),
+    defineField({
+      name: 'programSection',
+      title: 'Section Programme',
+      type: 'programSection',
+      description: 'Section avec titre et liste de programmes',
+    }),
   ],
   // @ts-ignore
   __experimental_actions: ['update', 'publish'], // disable 'create' & 'delete'

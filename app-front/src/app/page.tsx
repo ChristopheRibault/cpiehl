@@ -1,4 +1,4 @@
-import { NewsCard, Section } from "./_components";
+import { NewsCard, ProgramCard, Section } from "./_components";
 import { getHomepage } from "@/sanity/homepage";
 
 export default async function Homepage() {
@@ -11,6 +11,15 @@ export default async function Homepage() {
           <div className="flex flex-row flex-wrap gap-8 justify-center">
             {homepage.actualitesSection.actualites?.map((actualite) => (
               <NewsCard key={actualite._id} actualite={actualite} />
+            ))}
+          </div>
+        </Section>
+      )}
+      {homepage?.programSection && (
+        <Section title={homepage.programSection.title}>
+          <div className="flex flex-row flex-wrap gap-8 justify-center items-center">
+            {homepage.programSection.programs?.map((program) => (
+              <ProgramCard key={program._id} program={program} />
             ))}
           </div>
         </Section>
