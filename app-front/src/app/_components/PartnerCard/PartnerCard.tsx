@@ -7,7 +7,7 @@ export function PartnerCard({ partner }: { partner: Partner }) {
       href={partner.link || "#"}
       target="_blank"
       rel="noopener noreferrer"
-      className="flex items-center justify-center p-4 w-40 transition-shadow duration-300"
+      className="flex items-center justify-center p-2 md:p-4 w-40 transition-shadow duration-300"
     >
       <Image
         src={partner.logo.asset.url}
