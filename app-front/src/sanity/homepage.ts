@@ -3,6 +3,7 @@ import { z } from "zod";
 import { client } from "./client";
 import { actualiteSchema } from "./schemas/actualite";
 import { programSchema } from "./schemas/program";
+import { partnerSchema } from "./schemas/partner";
 
 const HOMEPAGE_QUERY = `*[_type == "homepage"][0]{
   _id,
@@ -32,6 +33,15 @@ const HOMEPAGE_QUERY = `*[_type == "homepage"][0]{
         label
       }
     }
+  },
+  partnersSection {
+    title,
+    partners[]-> {
+      _id,
+      name,
+      logo{asset->{url}, alt},
+      link
+    }
   }
 }`;
 
@@ -46,12 +56,18 @@ const programSectionSchema = z.object({
   programs: z.array(programSchema).optional(),
 });
 
+const partnersSectionSchema = z.object({
+  title: z.string(),
+  partners: z.array(partnerSchema).optional(),
+});
+
 // Schéma principal homepage
 export const homepageSchema = z.object({
   _id: z.string(),
   title: z.string(),
   actualitesSection: actualitesSectionSchema.optional(),
   programSection: programSectionSchema.optional(),
+  partnersSection: partnersSectionSchema.optional(),
 });
 
 export type Homepage = z.infer<typeof homepageSchema>;

@@ -1,5 +1,6 @@
-import { NewsCard, ProgramCard, Section } from "./_components";
+import { NewsCard, ProgramCard, Section, PartnerCard } from "./_components";
 import { getHomepage } from "@/sanity/homepage";
+import { Carousel } from "@/lib/ui";
 
 export default async function Homepage() {
   const homepage = await getHomepage();
@@ -22,6 +23,17 @@ export default async function Homepage() {
               <ProgramCard key={program._id} program={program} />
             ))}
           </div>
+        </Section>
+      )}
+      {homepage?.partnersSection && (
+        <Section title={homepage.partnersSection.title}>
+          <Carousel>
+            {homepage.partnersSection.partners?.map((partner) => (
+              <div key={partner._id} >
+                <PartnerCard partner={partner} />
+              </div>
+            ))}
+          </Carousel>
         </Section>
       )}
     </main>

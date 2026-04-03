@@ -23,6 +23,12 @@ export default defineType({
       type: 'programSection',
       description: 'Section avec titre et liste de programmes',
     }),
+    defineField({
+      name: 'partnersSection',
+      title: 'Section Partenaires',
+      type: 'partnersSection',
+      description: 'Section avec titre et liste de partenaires',
+    }),
   ],
   // @ts-ignore
   __experimental_actions: ['update', 'publish'], // disable 'create' & 'delete'
