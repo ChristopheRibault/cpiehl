@@ -1,6 +1,7 @@
 import { Program } from "@/sanity/schemas/program";
 import Image from "next/image";
 import Link from "next/link";
+import { Button } from "@/app/_components/Button/Button";
 
 export function ProgramCard({ program }: { program: Program }) {
   return (
@@ -18,11 +19,9 @@ export function ProgramCard({ program }: { program: Program }) {
         </Link>
       )}
       {program.link && (
-        <button>
-          <Link href={'/'} >
-            {program.link.label || "Voir le programme"}
-          </Link>
-        </button>
+        <Link href={"/"}>
+          <Button>{program.link.label || "Voir le programme"}</Button>
+        </Link>
       )}
     </article>
   );

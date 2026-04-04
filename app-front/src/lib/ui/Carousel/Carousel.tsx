@@ -1,13 +1,14 @@
-'use client';
+"use client";
 
-import { useCallback, useEffect, useState } from 'react';
-import useEmblaCarousel from 'embla-carousel-react';
-import Autoplay from 'embla-carousel-autoplay';
+import { useCallback, useEffect, useState } from "react";
+import useEmblaCarousel from "embla-carousel-react";
+import Autoplay from "embla-carousel-autoplay";
+import { Button } from "@/app/_components/Button/Button";
 
 interface CarouselProps {
   children: React.ReactNode;
   options?: {
-    align?: 'start' | 'center' | 'end';
+    align?: "start" | "center" | "end";
     loop?: boolean;
     slidesToScroll?: number;
   };
@@ -16,14 +17,26 @@ interface CarouselProps {
   withNavigation?: boolean;
 }
 
-export const Carousel = ({ children, options = {}, autoplay = true, autoplayDelay = 4000, withNavigation = true }: CarouselProps) => {
-  const autoplayPlugin = Autoplay({ delay: autoplayDelay, stopOnInteraction: true });
+export const Carousel = ({
+  children,
+  options = {},
+  autoplay = true,
+  autoplayDelay = 4000,
+  withNavigation = true,
+}: CarouselProps) => {
+  const autoplayPlugin = Autoplay({
+    delay: autoplayDelay,
+    stopOnInteraction: true,
+  });
 
-  const [emblaRef, emblaApi] = useEmblaCarousel({
-    align: 'start',
-    loop: true,
-    ...options,
-  }, autoplay ? [autoplayPlugin] : []);
+  const [emblaRef, emblaApi] = useEmblaCarousel(
+    {
+      align: "start",
+      loop: true,
+      ...options,
+    },
+    autoplay ? [autoplayPlugin] : [],
+  );
 
   const [canScrollPrev, setCanScrollPrev] = useState(false);
   const [canScrollNext, setCanScrollNext] = useState(false);
@@ -37,9 +50,9 @@ export const Carousel = ({ children, options = {}, autoplay = true, autoplayDela
   useEffect(() => {
     if (!emblaApi) return;
     onSelect();
-    emblaApi.on('select', onSelect);
+    emblaApi.on("select", onSelect);
     return () => {
-      emblaApi.off('select', onSelect);
+      emblaApi.off("select", onSelect);
     };
   }, [emblaApi, onSelect]);
 
@@ -54,31 +67,27 @@ export const Carousel = ({ children, options = {}, autoplay = true, autoplayDela
   return (
     <div className="w-full">
       <div className="overflow-hidden" ref={emblaRef}>
-        <div className="flex gap-3">
-          {children}
-        </div>
+        <div className="flex gap-3">{children}</div>
       </div>
 
       {/* Boutons de navigation */}
       {withNavigation && (
         <div className="flex justify-center gap-4 mt-6">
-          <button
+          <Button
             onClick={scrollPrev}
             disabled={!canScrollPrev}
             aria-label="Carousel précédent"
-            className="px-4 py-2 bg-primary text-white rounded-lg disabled:opacity-50 disabled:cursor-not-allowed hover:opacity-90 transition-opacity"
           >
             ←
-          </button>
-          <button
-          onClick={scrollNext}
-          disabled={!canScrollNext}
-          aria-label="Carousel suivant"
-          className="px-4 py-2 bg-primary text-white rounded-lg disabled:opacity-50 disabled:cursor-not-allowed hover:opacity-90 transition-opacity"
-        >
-          →
-        </button>
-      </div>
+          </Button>
+          <Button
+            onClick={scrollNext}
+            disabled={!canScrollNext}
+            aria-label="Carousel suivant"
+          >
+            →
+          </Button>
+        </div>
       )}
     </div>
   );
