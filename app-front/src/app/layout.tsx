@@ -19,7 +19,13 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: settings?.meta.shortTitle || "CPIE HL",
     description:
-      settings?.meta.siteDescription || "Site de l'association CPIE Haut-Languedoc",
+      settings?.meta.siteDescription ||
+      "Site de l'association CPIE Haut-Languedoc",
+    icons: settings?.meta.favicon?.asset?.url
+      ? {
+          icon: settings.meta.favicon.asset.url,
+        }
+      : undefined,
   };
 }
 

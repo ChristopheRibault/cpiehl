@@ -38,6 +38,11 @@ export default defineType({
           title: 'Description du site',
           type: 'string',
         }),
+        defineField({
+          name: 'favicon',
+          title: 'Favicon',
+          type: 'image',
+        }),
       ],
     }),
     defineField({

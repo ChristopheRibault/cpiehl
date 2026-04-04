@@ -1,4 +1,3 @@
-
 import { client } from "@/sanity/client";
 import { z } from "zod";
 
@@ -11,7 +10,6 @@ const logoSchema = z.object({
   }),
 });
 
-
 // Schéma Zod principal pour les settings du site
 export const siteSettingsSchema = z.object({
   siteTitle: z.string(),
@@ -21,6 +19,7 @@ export const siteSettingsSchema = z.object({
   meta: z.object({
     shortTitle: z.string().optional(),
     siteDescription: z.string().optional(),
+    favicon: logoSchema.optional(),
   }),
   chartColors: z.object({
     primaryColor: colorSchema,
@@ -32,7 +31,7 @@ export type SiteSettings = z.infer<typeof siteSettingsSchema>;
 
 export async function getSiteSettings(): Promise<SiteSettings> {
   const data = await client.fetch(
-    `*[_type == "siteSettings"][0]{ siteTitle, header{logo{asset->{url}}}, meta{shortTitle, siteDescription}, chartColors{primaryColor, secondaryColor} }`,
+    `*[_type == "siteSettings"][0]{ siteTitle, header{logo{asset->{url}}}, meta{shortTitle, siteDescription, favicon{asset->{url}}}, chartColors{primaryColor, secondaryColor} }`,
   );
   const parsed = siteSettingsSchema.safeParse(data);
   if (!parsed.success) {
