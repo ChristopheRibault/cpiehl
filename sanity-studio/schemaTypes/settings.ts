@@ -63,6 +63,12 @@ export default defineType({
         }),
       ],
     }),
+    defineField({
+      name: 'navigation',
+      title: 'Navigation',
+      type: 'array',
+      of: [{type: 'navigationGroup'}, {type: 'navigationLink'}],
+    }),
   ],
   // @ts-expect-error
   __experimental_actions: ['update', 'publish'], // singleton

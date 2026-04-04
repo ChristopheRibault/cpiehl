@@ -10,6 +10,15 @@ export default defineType({
       title: 'Titre',
       type: 'string',
     }),
+    defineField({
+      name: 'slug',
+      title: 'Slug',
+      type: 'slug',
+      options: {
+        source: 'title',
+        maxLength: 96,
+      },
+    }),
     // Ajoute d’autres champs selon tes besoins
   ],
 })
