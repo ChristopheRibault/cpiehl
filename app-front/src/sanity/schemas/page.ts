@@ -1,38 +1,9 @@
 // src/sanity/schemas/page.ts
 import z from "zod";
+import { teamSectionSchema } from "./sections/teamSection";
+import { boardSectionSchema } from "./sections/boardSection";
 
-export const teamSectionSchema = z.object({
-  _type: z.literal("teamSection"),
-  title: z.string(),
-  teamMembers: z.array(
-    z.object({
-      firstname: z.string(),
-      lastname: z.string(),
-      role: z.array(z.string()).nullable(),
-      email: z.email(),
-      photo: z
-        .object({
-          asset: z.object({
-            url: z.url(),
-          }),
-        })
-        .optional(),
-      avatar: z
-        .object({
-          asset: z.object({
-            url: z.url(),
-          }),
-        })
-        .optional(),
-    }),
-  ),
-});
-
-const sectionSchema = z.union([
-  // partnersSectionSchema,
-  // contactSectionSchema,
-  teamSectionSchema,
-]);
+const sectionSchema = z.union([teamSectionSchema, boardSectionSchema]);
 
 export const pageSchema = z.object({
   _id: z.string(),
@@ -43,5 +14,4 @@ export const pageSchema = z.object({
   sections: z.array(sectionSchema).nullable(),
 });
 
-export type TeamSection = z.infer<typeof teamSectionSchema>;
 export type Page = z.infer<typeof pageSchema>;

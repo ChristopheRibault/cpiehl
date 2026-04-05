@@ -1,4 +1,5 @@
 import actualitesSection from './actualitesSection'
+import boardSection from './boardSection'
 import contactSection from './contactSection'
 import partnersSection from './partnersSection'
 import programSection from './programSection'
@@ -10,4 +11,5 @@ export const homePageSections = [
   partnersSection,
   contactSection,
   teamSection,
+  boardSection,
 ]

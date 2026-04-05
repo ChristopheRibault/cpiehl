@@ -1,4 +1,4 @@
-import { type TeamSection } from "@/sanity/schemas/page";
+import { type TeamSection } from "@/sanity/schemas/sections/teamSection";
 import { Section } from "../../Section/Section";
 import Image from "next/image";
 import Link from "next/link";
@@ -28,8 +28,8 @@ export function TeamSection({ section }: { section: TeamSection }) {
                 <h3 className="text-2xl font-semibold mb-4 w-full">
                   {member.firstname} {member.lastname.toUpperCase()}
                 </h3>
-                {member.role?.map((role, index) => (
-                  <p key={index} className="text-secondary text-xl">
+                {member.role?.map((role) => (
+                  <p key={role} className="text-secondary text-xl">
                     {role}
                   </p>
                 ))}

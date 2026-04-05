@@ -24,9 +24,8 @@ export default defineType({
       title: 'Sections',
       type: 'array',
       of: [
-        {type: 'partnersSection'},
-        {type: 'contactSection'},
         {type: 'teamSection'},
+        {type: 'boardSection'},
         // Ajoute d’autres types de sections selon tes besoins
       ],
     }),

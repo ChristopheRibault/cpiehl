@@ -2,6 +2,7 @@
 import { getPage, getAllPageSlugs } from "@/sanity/pages";
 import { Metadata } from "next";
 import { TeamSection } from "../_components/sections";
+import { BoardSection } from "../_components/sections/BoardSection/BoardSection";
 // import PartnersSection from "@/app/_components/sections/PartnersSection";
 // import ContactSection from "@/app/_components/sections/ContactSection";
 
@@ -39,6 +40,8 @@ export default async function Page({
         switch (section._type) {
           case "teamSection":
             return <TeamSection key={section.title} section={section} />;
+          case "boardSection":
+            return <BoardSection key={section.title} section={section} />;
           // case "partnersSection":
           //   return <PartnersSection key={section.title} section={section} />;
           // case "contactSection":
