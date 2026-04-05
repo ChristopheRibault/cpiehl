@@ -36,6 +36,14 @@
   color: #ffffff;
 }
 
+.border-primary {
+  border-color: var(--primary-color);
+}
+
+.border-secondary {
+  border-color: var(--secondary-color);
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;

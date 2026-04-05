@@ -19,6 +19,17 @@ export default defineType({
         maxLength: 96,
       },
     }),
+    defineField({
+      name: 'sections',
+      title: 'Sections',
+      type: 'array',
+      of: [
+        {type: 'partnersSection'},
+        {type: 'contactSection'},
+        {type: 'teamSection'},
+        // Ajoute d’autres types de sections selon tes besoins
+      ],
+    }),
     // Ajoute d’autres champs selon tes besoins
   ],
 })

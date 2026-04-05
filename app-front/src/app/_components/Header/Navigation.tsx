@@ -61,6 +61,12 @@ export const Navigation = ({ items = [] }: Props) => {
         `}
       >
         <ul className="flex flex-col md:flex-row md:gap-6 md:items-center md:justify-center w-full">
+          <NavLink
+            label="Accueil"
+            href="/"
+            className="text-secondary hover:text-primary"
+            onClick={closeBurger}
+          />
           {items.map((item, index) => {
             const itemId = `nav-item-${index}`;
             const isSubmenuOpen = openSubmenuId === itemId;
