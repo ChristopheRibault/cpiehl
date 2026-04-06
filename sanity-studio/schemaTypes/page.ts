@@ -26,6 +26,7 @@ export default defineType({
       of: [
         {type: 'teamSection'},
         {type: 'boardSection'},
+        {type: 'richTextBlock'},
         // Ajoute d’autres types de sections selon tes besoins
       ],
     }),

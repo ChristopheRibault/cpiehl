@@ -12,6 +12,10 @@ export async function getPage(slug: string): Promise<Page> {
         _type,
         _id,
         ...,
+        "content": content[]{
+          ...,
+          "markDefs": markDefs[]{...}
+        },
         "teamMembers": teamMembers[]{
           ...,
           "photo": photo{asset->{url}},

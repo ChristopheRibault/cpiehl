@@ -1,8 +1,11 @@
 // src/app/[slug]/page.tsx
 import { getPage, getAllPageSlugs } from "@/sanity/pages";
 import { Metadata } from "next";
-import { TeamSection } from "../_components/sections";
-import { BoardSection } from "../_components/sections/BoardSection/BoardSection";
+import {
+  TeamSection,
+  BoardSection,
+  RichTextBlock,
+} from "../_components/sections";
 // import PartnersSection from "@/app/_components/sections/PartnersSection";
 // import ContactSection from "@/app/_components/sections/ContactSection";
 
@@ -42,6 +45,10 @@ export default async function Page({
             return <TeamSection key={section.title} section={section} />;
           case "boardSection":
             return <BoardSection key={section.title} section={section} />;
+          case "richTextBlock":
+            return (
+              <RichTextBlock key={section._key} content={section.content} />
+            );
           // case "partnersSection":
           //   return <PartnersSection key={section.title} section={section} />;
           // case "contactSection":
