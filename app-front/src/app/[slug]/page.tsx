@@ -5,9 +5,11 @@ import {
   TeamList,
   BoardMembersList,
   RichTextBlock,
+  CardGrid,
+  FigureCard,
 } from "../_components/sections";
 import { Section } from "../_components";
-import { CardGrid } from "../_components/sections/CardGrid/CardGrid";
+import { ImageGallery } from "../_components/sections/ImageGallery/ImageGallery";
 
 export async function generateStaticParams() {
   const slugs = await getAllPageSlugs();
@@ -52,6 +54,12 @@ export default async function Page({
               );
             case "cardGrid":
               return <CardGrid key={section._key} cards={section.cards} />;
+            case "figureCard":
+              return <FigureCard key={section._key} section={section} />;
+            case "imagesGallery":
+              return (
+                <ImageGallery key={section._key} content={section.images} />
+              );
             default:
               return null;
           }

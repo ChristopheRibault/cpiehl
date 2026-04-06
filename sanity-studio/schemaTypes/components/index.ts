@@ -3,6 +3,8 @@ import boardMember from './boardMember'
 import boardMembersList from './boardMembersList'
 import card from './card'
 import cardGrid from './cardGrid'
+import figureCard from './figureCard'
+import imagesGallery from './imagesGallery'
 import link from './link'
 import navigationGroup from './navigationGroup'
 import navigationLink from './navigationLink'
@@ -24,4 +26,6 @@ export const components = [
   link,
   card,
   cardGrid,
+  figureCard,
+  imagesGallery,
 ]

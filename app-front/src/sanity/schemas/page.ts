@@ -4,12 +4,16 @@ import { teamListSchema } from "./sections/teamList";
 import { boardMembersListSchema } from "./sections/boardMembersList";
 import { richTextBlockSchema } from "./sections/richTextBlock";
 import { cardGridSchema } from "./sections/cardGrid";
+import { figureCardSchema } from "./sections/figureCard";
+import { imagesGallerySchema } from "./sections/imageGallery";
 
 const sectionSchema = z.union([
   teamListSchema,
   boardMembersListSchema,
   richTextBlockSchema,
   cardGridSchema,
+  figureCardSchema,
+  imagesGallerySchema,
 ]);
 
 export const pageSchema = z.object({

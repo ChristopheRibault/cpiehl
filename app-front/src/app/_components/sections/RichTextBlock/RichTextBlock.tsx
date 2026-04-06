@@ -57,10 +57,10 @@ const portableTextComponents: Partial<PortableTextReactComponents> = {
   },
   listItem: {
     bullet: ({ children }: { children?: ReactNode }) => (
-      <li className="ml-4">{children}</li>
+      <li className="ml-2 sm:ml-4">{children}</li>
     ),
     number: ({ children }: { children?: ReactNode }) => (
-      <li className="ml-4">{children}</li>
+      <li className="ml-2 sm:ml-4">{children}</li>
     ),
   },
 };
@@ -71,7 +71,7 @@ export function RichTextBlock({
   content: RichTextBlock["content"];
 }) {
   return (
-    <div className="prose prose-sm max-w-none p-4">
+    <div className="prose prose-sm max-w-none p-2 md:p-4">
       <PortableText value={content} components={portableTextComponents} />
     </div>
   );

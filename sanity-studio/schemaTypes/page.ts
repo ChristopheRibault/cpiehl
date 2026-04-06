@@ -28,6 +28,8 @@ export default defineType({
         {type: 'boardMembersList'},
         {type: 'richTextBlock'},
         {type: 'cardGrid'},
+        {type: 'figureCard'},
+        {type: 'imagesGallery'},
         // Ajoute d’autres types de sections selon tes besoins
       ],
     }),
