@@ -24,8 +24,8 @@ export default defineType({
       title: 'Sections',
       type: 'array',
       of: [
-        {type: 'teamSection'},
-        {type: 'boardSection'},
+        {type: 'teamList'},
+        {type: 'boardMembersList'},
         {type: 'richTextBlock'},
         // Ajoute d’autres types de sections selon tes besoins
       ],

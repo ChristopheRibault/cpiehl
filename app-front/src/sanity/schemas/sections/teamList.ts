@@ -1,8 +1,8 @@
 import z from "zod";
 
-export const teamSectionSchema = z.object({
-  _type: z.literal("teamSection"),
-  title: z.string(),
+export const teamListSchema = z.object({
+  _type: z.literal("teamList"),
+  _key: z.string(),
   teamMembers: z.array(
     z.object({
       firstname: z.string(),
@@ -27,4 +27,4 @@ export const teamSectionSchema = z.object({
   ),
 });
 
-export type TeamSection = z.infer<typeof teamSectionSchema>;
+export type TeamList = z.infer<typeof teamListSchema>;

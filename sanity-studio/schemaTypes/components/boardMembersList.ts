@@ -1,16 +1,10 @@
 import {defineType, defineField} from 'sanity'
 
 export default defineType({
-  name: 'boardSection',
-  title: "Section Conseil d'Administration",
+  name: 'boardMembersList',
+  title: "Liste des membres du Conseil d'Administration",
   type: 'object',
   fields: [
-    defineField({
-      name: 'title',
-      title: 'Titre de la section',
-      type: 'string',
-      validation: (Rule) => Rule.required(),
-    }),
     defineField({
       name: 'mainBoardMembers',
       title: "Membres du conseil d'administration",
@@ -28,7 +22,6 @@ export default defineType({
   ],
   preview: {
     select: {
-      title: 'title',
       mainBoardMembers: 'mainBoardMembers',
       secondaryBoardMembers: 'secondaryBoardMembers',
     },
@@ -36,7 +29,7 @@ export default defineType({
       const count =
         (selection.mainBoardMembers?.length || 0) + (selection.secondaryBoardMembers?.length || 0)
       return {
-        title: selection.title,
+        title: "Membres du Conseil d'Administration",
         subtitle: `${count} membre${count > 1 ? 's' : ''}`,
       }
     },

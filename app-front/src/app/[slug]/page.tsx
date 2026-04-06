@@ -2,10 +2,11 @@
 import { getPage, getAllPageSlugs } from "@/sanity/pages";
 import { Metadata } from "next";
 import {
-  TeamSection,
-  BoardSection,
+  TeamList,
+  BoardMembersList,
   RichTextBlock,
 } from "../_components/sections";
+import { Section } from "../_components";
 // import PartnersSection from "@/app/_components/sections/PartnersSection";
 // import ContactSection from "@/app/_components/sections/ContactSection";
 
@@ -39,24 +40,26 @@ export default async function Page({
 
   return (
     <main className="w-full">
-      {page.sections?.map((section) => {
-        switch (section._type) {
-          case "teamSection":
-            return <TeamSection key={section.title} section={section} />;
-          case "boardSection":
-            return <BoardSection key={section.title} section={section} />;
-          case "richTextBlock":
-            return (
-              <RichTextBlock key={section._key} content={section.content} />
-            );
-          // case "partnersSection":
-          //   return <PartnersSection key={section.title} section={section} />;
-          // case "contactSection":
-          //   return <ContactSection key={section.title} section={section} />;
-          default:
-            return null;
-        }
-      })}
+      <Section title={page.title}>
+        {page.sections?.map((section) => {
+          switch (section._type) {
+            case "teamList":
+              return <TeamList key={section._key} section={section} />;
+            case "boardMembersList":
+              return <BoardMembersList key={section._key} section={section} />;
+            case "richTextBlock":
+              return (
+                <RichTextBlock key={section._key} content={section.content} />
+              );
+            // case "partnersSection":
+            //   return <PartnersSection key={section.title} section={section} />;
+            // case "contactSection":
+            //   return <ContactSection key={section.title} section={section} />;
+            default:
+              return null;
+          }
+        })}
+      </Section>
     </main>
   );
 }

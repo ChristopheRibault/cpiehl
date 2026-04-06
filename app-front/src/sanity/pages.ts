@@ -10,7 +10,7 @@ export async function getPage(slug: string): Promise<Page> {
       slug,
       sections[]{
         _type,
-        _id,
+        _key,
         ...,
         "content": content[]{
           ...,
@@ -20,11 +20,13 @@ export async function getPage(slug: string): Promise<Page> {
           ...,
           "photo": photo{asset->{url}},
           "avatar": avatar{asset->{url}}
-        }
+        },
       }
     }`,
     { slug },
   );
+
+  console.log({ data });
 
   return pageSchema.parse(data);
 }

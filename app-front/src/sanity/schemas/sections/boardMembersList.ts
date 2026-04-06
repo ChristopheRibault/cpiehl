@@ -8,11 +8,11 @@ const memberSchema = z.object({
   complement: z.string().nullable().optional(),
 });
 
-export const boardSectionSchema = z.object({
-  _type: z.literal("boardSection"),
-  title: z.string(),
+export const boardMembersListSchema = z.object({
+  _type: z.literal("boardMembersList"),
+  _key: z.string(),
   mainBoardMembers: z.array(memberSchema),
   secondaryBoardMembers: z.array(memberSchema),
 });
 
-export type BoardSection = z.infer<typeof boardSectionSchema>;
+export type BoardMembersList = z.infer<typeof boardMembersListSchema>;

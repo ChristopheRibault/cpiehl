@@ -1,12 +1,12 @@
 // src/sanity/schemas/page.ts
 import z from "zod";
-import { teamSectionSchema } from "./sections/teamSection";
-import { boardSectionSchema } from "./sections/boardSection";
+import { teamListSchema } from "./sections/teamList";
+import { boardMembersListSchema } from "./sections/boardMembersList";
 import { richTextBlockSchema } from "./sections/richTextBlock";
 
 const sectionSchema = z.union([
-  teamSectionSchema,
-  boardSectionSchema,
+  teamListSchema,
+  boardMembersListSchema,
   richTextBlockSchema,
 ]);
 

@@ -1,16 +1,10 @@
 import {defineType, defineField} from 'sanity'
 
 export default defineType({
-  name: 'teamSection',
-  title: 'Section Équipe',
+  name: 'teamList',
+  title: "Liste des membres de l'équipe",
   type: 'object',
   fields: [
-    defineField({
-      name: 'title',
-      title: 'Titre de la section',
-      type: 'string',
-      validation: (Rule) => Rule.required(),
-    }),
     defineField({
       name: 'teamMembers',
       title: "Membres de l'équipe",
@@ -81,12 +75,11 @@ export default defineType({
   ],
   preview: {
     select: {
-      title: 'title',
       teamMembers: 'teamMembers',
     },
     prepare(selection) {
       return {
-        title: selection.title,
+        title: 'Section Équipe',
         subtitle: `${selection.teamMembers?.length || 0} membre${selection.teamMembers?.length > 1 ? 's' : ''}`,
         media: selection.teamMembers?.[0]?.photo,
       }
