@@ -27,6 +27,7 @@ export default defineType({
         {type: 'teamList'},
         {type: 'boardMembersList'},
         {type: 'richTextBlock'},
+        {type: 'cardGrid'},
         // Ajoute d’autres types de sections selon tes besoins
       ],
     }),

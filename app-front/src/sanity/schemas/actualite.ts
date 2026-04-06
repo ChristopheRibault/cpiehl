@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { imageSchema } from "./image";
+import { imageSchema } from "../components/image";
 
 export const actualiteSchema = z.object({
   _id: z.string(),

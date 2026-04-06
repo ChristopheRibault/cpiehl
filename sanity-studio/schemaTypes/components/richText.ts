@@ -22,7 +22,6 @@ export default defineType({
             decorators: [
               {title: 'Bold', value: 'strong'},
               {title: 'Italic', value: 'em'},
-              {title: 'Underline', value: 'underline'},
             ],
             // Ajouter les annotations
             annotations: [
@@ -53,4 +52,21 @@ export default defineType({
       ],
     }),
   ],
+  preview: {
+    select: {
+      content: 'content',
+    },
+    prepare(selection) {
+      const textPreview = selection.content
+        ? selection.content
+            .filter((block: any) => block._type === 'block')
+            .map((block: any) => block.children.map((child: any) => child.text).join(''))
+            .join(' ')
+        : 'Aucun contenu'
+      return {
+        title: 'Bloc de texte riche',
+        subtitle: textPreview.length > 50 ? textPreview.substring(0, 47) + '...' : textPreview,
+      }
+    },
+  },
 })

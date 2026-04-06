@@ -2,7 +2,7 @@ import { z } from "zod";
 
 export const imageSchema = z.object({
   asset: z.object({
-    url: z.string().url(),
+    url: z.url(),
   }),
   alt: z.string().optional().nullable(),
 });

@@ -1,7 +1,7 @@
 import { client } from "@/sanity/client";
 import { z } from "zod";
 
-import { colorSchema } from "./schemas/color";
+import { colorSchema } from "./components/color";
 import { navigationLinkSchema } from "./schemas/navigationLink";
 import { navigationGroupSchema } from "./schemas/navigationGroup";
 

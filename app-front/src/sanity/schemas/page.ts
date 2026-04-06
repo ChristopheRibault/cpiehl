@@ -3,11 +3,13 @@ import z from "zod";
 import { teamListSchema } from "./sections/teamList";
 import { boardMembersListSchema } from "./sections/boardMembersList";
 import { richTextBlockSchema } from "./sections/richTextBlock";
+import { cardGridSchema } from "./sections/cardGrid";
 
 const sectionSchema = z.union([
   teamListSchema,
   boardMembersListSchema,
   richTextBlockSchema,
+  cardGridSchema,
 ]);
 
 export const pageSchema = z.object({

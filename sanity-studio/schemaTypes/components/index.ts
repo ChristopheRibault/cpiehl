@@ -1,6 +1,9 @@
 import actu from './actu'
 import boardMember from './boardMember'
 import boardMembersList from './boardMembersList'
+import card from './card'
+import cardGrid from './cardGrid'
+import link from './link'
 import navigationGroup from './navigationGroup'
 import navigationLink from './navigationLink'
 import partner from './partner'
@@ -18,4 +21,7 @@ export const components = [
   boardMembersList,
   teamList,
   richText,
+  link,
+  card,
+  cardGrid,
 ]

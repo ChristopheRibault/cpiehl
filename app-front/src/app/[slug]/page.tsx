@@ -7,8 +7,7 @@ import {
   RichTextBlock,
 } from "../_components/sections";
 import { Section } from "../_components";
-// import PartnersSection from "@/app/_components/sections/PartnersSection";
-// import ContactSection from "@/app/_components/sections/ContactSection";
+import { CardGrid } from "../_components/sections/CardGrid/CardGrid";
 
 export async function generateStaticParams() {
   const slugs = await getAllPageSlugs();
@@ -51,10 +50,8 @@ export default async function Page({
               return (
                 <RichTextBlock key={section._key} content={section.content} />
               );
-            // case "partnersSection":
-            //   return <PartnersSection key={section.title} section={section} />;
-            // case "contactSection":
-            //   return <ContactSection key={section.title} section={section} />;
+            case "cardGrid":
+              return <CardGrid key={section._key} cards={section.cards} />;
             default:
               return null;
           }

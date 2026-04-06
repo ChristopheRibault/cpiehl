@@ -21,6 +21,10 @@ export async function getPage(slug: string): Promise<Page> {
           "photo": photo{asset->{url}},
           "avatar": avatar{asset->{url}}
         },
+        "cards": cards[]{
+          ...,
+          "image": image{asset->{url}}
+        }
       }
     }`,
     { slug },

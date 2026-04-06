@@ -27,7 +27,7 @@ const blockSchema = z.object({
 // Rich text block complet
 export const richTextBlockSchema = z.object({
   _type: z.literal("richTextBlock"),
-  _key: z.string(),
+  _key: z.string().optional(),
   content: z.array(blockSchema),
 });
 

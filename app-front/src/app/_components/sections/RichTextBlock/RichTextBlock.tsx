@@ -29,9 +29,6 @@ const portableTextComponents: Partial<PortableTextReactComponents> = {
     em: ({ children }: { children?: ReactNode }) => (
       <em className="italic">{children}</em>
     ),
-    underline: ({ children }: { children?: ReactNode }) => (
-      <u className="underline">{children}</u>
-    ),
     link: ({ value, children }: { value?: any; children?: ReactNode }) => {
       const href = value?.href;
       const external = value?.external;
@@ -58,7 +55,7 @@ export function RichTextBlock({
   content: RichTextBlock["content"];
 }) {
   return (
-    <div className="prose prose-sm max-w-none">
+    <div className="prose prose-sm max-w-none p-4">
       <PortableText value={content} components={portableTextComponents} />
     </div>
   );
