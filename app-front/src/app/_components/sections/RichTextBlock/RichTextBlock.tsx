@@ -8,16 +8,16 @@ import { type ReactNode } from "react";
 const portableTextComponents: Partial<PortableTextReactComponents> = {
   block: {
     normal: ({ children }: { children?: ReactNode }) => (
-      <p className="mb-4 text-base leading-relaxed">{children}</p>
+      <p className="mb-2 text-base leading-relaxed">{children}</p>
     ),
     h3: ({ children }: { children?: ReactNode }) => (
-      <h3 className="mb-4 text-xl font-bold">{children}</h3>
+      <h3 className="mb-2 text-xl font-bold">{children}</h3>
     ),
     h4: ({ children }: { children?: ReactNode }) => (
-      <h4 className="mb-3 text-lg font-semibold">{children}</h4>
+      <h4 className="mb-2 text-lg font-semibold">{children}</h4>
     ),
     blockquote: ({ children }: { children?: ReactNode }) => (
-      <blockquote className="mb-4 border-l-4 border-primary pl-4 italic text-gray-600">
+      <blockquote className="mb-2 border-l-4 border-primary pl-4 italic text-gray-600">
         {children}
       </blockquote>
     ),
@@ -46,6 +46,22 @@ const portableTextComponents: Partial<PortableTextReactComponents> = {
         </a>
       );
     },
+  },
+  list: {
+    bullet: ({ children }: { children?: ReactNode }) => (
+      <ul className="list-disc list-inside mb-2 space-y-1">{children}</ul>
+    ),
+    number: ({ children }: { children?: ReactNode }) => (
+      <ol className="list-decimal list-inside mb-2 space-y-1">{children}</ol>
+    ),
+  },
+  listItem: {
+    bullet: ({ children }: { children?: ReactNode }) => (
+      <li className="ml-4">{children}</li>
+    ),
+    number: ({ children }: { children?: ReactNode }) => (
+      <li className="ml-4">{children}</li>
+    ),
   },
 };
 

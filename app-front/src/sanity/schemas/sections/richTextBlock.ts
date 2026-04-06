@@ -22,6 +22,8 @@ const blockSchema = z.object({
   style: z.enum(["normal", "h3", "h4", "blockquote"]).optional(),
   children: z.array(spanSchema),
   markDefs: z.array(linkAnnotationSchema).optional(),
+  listItem: z.enum(["bullet", "number"]).optional(), // Pour les listes
+  level: z.number().optional(), // Pour les listes imbriquées
 });
 
 // Rich text block complet
