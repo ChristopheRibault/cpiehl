@@ -6,11 +6,13 @@ import { richTextBlockSchema } from "./sections/richTextBlock";
 import { cardGridSchema } from "./sections/cardGrid";
 import { figureCardSchema } from "./sections/figureCard";
 import { imagesGallerySchema } from "./sections/imageGallery";
+import { textWithImageSchema } from "./sections/textWithImage";
 
 const sectionSchema = z.union([
   teamListSchema,
   boardMembersListSchema,
   richTextBlockSchema,
+  textWithImageSchema,
   cardGridSchema,
   figureCardSchema,
   imagesGallerySchema,

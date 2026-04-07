@@ -7,9 +7,10 @@ import {
   RichTextBlock,
   CardGrid,
   FigureCard,
+  TextWithImage,
+  ImageGallery,
 } from "../_components/sections";
 import { Section } from "../_components";
-import { ImageGallery } from "../_components/sections/ImageGallery/ImageGallery";
 
 export async function generateStaticParams() {
   const slugs = await getAllPageSlugs();
@@ -60,6 +61,8 @@ export default async function Page({
               return (
                 <ImageGallery key={section._key} content={section.images} />
               );
+            case "textWithImage":
+              return <TextWithImage key={section._key} section={section} />;
             default:
               return null;
           }

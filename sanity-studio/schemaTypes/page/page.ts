@@ -24,12 +24,13 @@ export default defineType({
       title: 'Sections',
       type: 'array',
       of: [
-        {type: 'teamList'},
-        {type: 'boardMembersList'},
         {type: 'richTextBlock'},
+        {type: 'textWithImage'},
         {type: 'cardGrid'},
         {type: 'figureCard'},
         {type: 'imagesGallery'},
+        {type: 'teamList'},
+        {type: 'boardMembersList'},
         // Ajoute d’autres types de sections selon tes besoins
       ],
     }),
