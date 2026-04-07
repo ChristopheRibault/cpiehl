@@ -7,6 +7,7 @@ import { NavLink } from "./NavLink";
 import { ChevronIcon } from "@/app/_components/Icons/ChevronIcon";
 import { useArrowNavigation } from "@/hooks/useArrowNavigation";
 import { useGroupKeyDown } from "@/hooks/useGroupKeyDown";
+import { usePathname } from "next/navigation";
 
 type SubmenuItem = z.infer<typeof navigationLinkSchema>;
 
@@ -27,12 +28,18 @@ export const NavGroup = ({
 }: Props) => {
   const buttonRef = useRef<HTMLButtonElement>(null);
   const submenuRef = useRef<HTMLUListElement>(null);
+  const pathname = usePathname();
+
+  const hasActiveChild = submenuItems.some((item) => {
+    const href = `/${item.page.slug.current}`;
+    return pathname === href || (href !== "/" && pathname.startsWith(href));
+  });
 
   // Gestion de la navigation au clavier
   const handleKeyDown = useGroupKeyDown({ isOpen, onToggle, submenuRef });
   useArrowNavigation(submenuRef, "a", isOpen);
   return (
-    <div className="relative group">
+    <div className="relative group min-w-32">
       {/* Bouton du groupe */}
       <button
         ref={buttonRef}
@@ -40,14 +47,17 @@ export const NavGroup = ({
         onKeyDown={handleKeyDown}
         aria-expanded={isOpen}
         aria-haspopup="true"
-        className="
-          flex items-center gap-2 py-2 px-4
-          text-secondary hover:text-primary
+        className={`
+          flex items-center gap-2 py-2 px-4 md:px-8
+          md:border-l md:border-secondary/30
+          hover:text-white
+          hover:bg-secondary/70
           cursor-pointer
           transition-colors duration-200
           font-bold
-          w-full md:w-auto
-        "
+          w-full md:w-auto md:min-w-32
+          ${hasActiveChild ? "md:bg-primary text-secondary md:text-white" : "text-secondary"}
+        `}
       >
         <span>{label}</span>
         <ChevronIcon
@@ -73,7 +83,6 @@ export const NavGroup = ({
         {submenuItems.map((item) => (
           <li key={`${item.label}-${item.page.slug.current}`}>
             <NavLink
-              className="hover:bg-primary text-secondary hover:text-white ml-4 md:ml-0"
               label={item.label}
               href={`/${item.page.slug.current}`}
               onClick={onLinkClick}

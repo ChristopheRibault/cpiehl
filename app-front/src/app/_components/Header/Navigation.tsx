@@ -60,11 +60,11 @@ export const Navigation = ({ items = [] }: Props) => {
           z-40
         `}
       >
-        <ul className="flex flex-col md:flex-row md:gap-6 md:items-center md:justify-center w-full">
+        <ul className="flex flex-col md:flex-row md:items-center md:justify-center w-full">
           <NavLink
             label="Accueil"
             href="/"
-            className="text-secondary hover:text-primary"
+            isFirstLevel
             onClick={closeBurger}
           />
           {items.map((item, index) => {
@@ -75,9 +75,9 @@ export const Navigation = ({ items = [] }: Props) => {
               return (
                 <li key={itemId}>
                   <NavLink
-                    className="text-secondary hover:text-primary"
                     label={item.label}
                     href={`/${item.page.slug.current}`}
+                    isFirstLevel
                     onClick={closeBurger}
                   />
                 </li>

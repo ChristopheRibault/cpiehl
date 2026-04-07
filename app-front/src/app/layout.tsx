@@ -4,6 +4,16 @@ import "./globals.css";
 import { getSiteSettings } from "@/sanity/settings";
 import { Header } from "./_components";
 
+// Fonction pour convertir hex en RGB
+function hexToRgb(hex: string): string {
+  const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+  if (!result) return "0, 0, 0";
+  const r = Number.parseInt(result[1], 16);
+  const g = Number.parseInt(result[2], 16);
+  const b = Number.parseInt(result[3], 16);
+  return `${r}, ${g}, ${b}`;
+}
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -47,9 +57,15 @@ export default async function RootLayout({
             // Injection des couleurs Sanity dans les variables CSS (utilisation du champ .hex)
             ...(settings?.chartColors.primaryColor && {
               "--primary-color": settings.chartColors.primaryColor.hex,
+              "--primary-color-rgb": hexToRgb(
+                settings.chartColors.primaryColor.hex,
+              ),
             }),
             ...(settings?.chartColors.secondaryColor && {
               "--secondary-color": settings.chartColors.secondaryColor.hex,
+              "--secondary-color-rgb": hexToRgb(
+                settings.chartColors.secondaryColor.hex,
+              ),
             }),
           } as React.CSSProperties
         }
