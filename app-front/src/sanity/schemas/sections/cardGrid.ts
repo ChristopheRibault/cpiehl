@@ -10,7 +10,8 @@ export const cardGridSchema = z.object({
     z.object({
       title: z.string(),
       description: richTextBlockSchema.optional(),
-      image: imageSchema.optional(),
+      image: imageSchema.optional().nullable(),
+      icon: imageSchema.optional().nullable(),
       links: z.array(linkSchema).optional(),
     }),
   ),

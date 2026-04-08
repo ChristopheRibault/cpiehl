@@ -94,11 +94,13 @@ const portableTextComponents: Partial<PortableTextReactComponents> = {
 
 export function RichTextBlock({
   content,
+  className = "",
 }: {
   content: RichTextBlock["content"];
+  className?: string;
 }) {
   return (
-    <div className="prose prose-sm max-w-none p-2 md:p-4">
+    <div className={`prose prose-sm max-w-none ${className}`}>
       <PortableText value={content} components={portableTextComponents} />
     </div>
   );

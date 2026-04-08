@@ -1,8 +1,6 @@
 import { z } from "zod";
 
 export const imageSchema = z.object({
-  _type: z.literal("image"),
-  _key: z.string(),
   asset: z.object({
     url: z.url(),
   }),

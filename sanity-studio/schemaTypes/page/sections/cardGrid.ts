@@ -10,6 +10,7 @@ export default defineType({
       title: 'Cartes',
       type: 'array',
       of: [{type: 'card'}],
+      validation: (Rule) => Rule.required().min(1),
     },
   ],
   preview: {
@@ -17,9 +18,11 @@ export default defineType({
       cards: 'cards',
     },
     prepare(selection) {
-      const cardCount = selection.cards?.length || 0
+      const cardCount = selection.cards.length || 0
+      const media = selection.cards[0].icon || selection.cards[0].image
       return {
         title: `Grille de cartes (${cardCount} carte${cardCount > 1 ? 's' : ''})`,
+        media,
       }
     },
   },

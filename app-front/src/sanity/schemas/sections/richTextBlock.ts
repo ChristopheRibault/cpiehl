@@ -31,7 +31,15 @@ const blockSchema = z.object({
 export const richTextBlockSchema = z.object({
   _type: z.literal("richTextBlock"),
   _key: z.string().optional(),
-  content: z.array(z.union([blockSchema, imageSchema])),
+  content: z.array(
+    z.union([
+      blockSchema,
+      imageSchema.extend({
+        _type: z.literal("image"),
+        _key: z.string(),
+      }),
+    ]),
+  ),
 });
 
 export type RichTextBlock = z.infer<typeof richTextBlockSchema>;
