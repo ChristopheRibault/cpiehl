@@ -14,7 +14,8 @@ export async function getPage(slug: string): Promise<Page> {
         ...,
         "content": content[]{
           ...,
-          "markDefs": markDefs[]{...}
+          "markDefs": markDefs[]{...},
+          "asset": asset->{url}
         },
         "teamMembers": teamMembers[]{
           ...,

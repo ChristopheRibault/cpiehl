@@ -1,3 +1,4 @@
+import { imageSchema } from "@/sanity/components/image";
 import z from "zod";
 
 // Annotation de lien
@@ -30,7 +31,7 @@ const blockSchema = z.object({
 export const richTextBlockSchema = z.object({
   _type: z.literal("richTextBlock"),
   _key: z.string().optional(),
-  content: z.array(blockSchema),
+  content: z.array(z.union([blockSchema, imageSchema])),
 });
 
 export type RichTextBlock = z.infer<typeof richTextBlockSchema>;

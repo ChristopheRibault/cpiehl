@@ -22,6 +22,33 @@ const portableTextComponents: Partial<PortableTextReactComponents> = {
       </blockquote>
     ),
   },
+  types: {
+    image: ({ value }: { value?: any }) => {
+      if (!value?.asset?.url) return null;
+      const { alt, position } = value;
+      let positionClass = "";
+      switch (position) {
+        case "left":
+          positionClass = "justify-start";
+          break;
+        case "right":
+          positionClass = "justify-end";
+          break;
+        default:
+          positionClass = "justify-center";
+      }
+
+      return (
+        <div className={`my-6 flex ${positionClass} w-full`}>
+          <img
+            src={value.asset.url}
+            alt={alt || "Image du contenu"}
+            className="rounded-lg max-w-full h-auto"
+          />
+        </div>
+      );
+    },
+  },
   marks: {
     strong: ({ children }: { children?: ReactNode }) => (
       <strong className="font-bold">{children}</strong>

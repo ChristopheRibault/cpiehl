@@ -14,19 +14,19 @@ export default defineType({
           type: 'block',
           styles: [
             {title: 'Normal', value: 'normal'},
-            {title: 'H3', value: 'h3'},
-            {title: 'H4', value: 'h4'},
-            {title: 'Quote', value: 'blockquote'},
+            {title: 'Titre 1', value: 'h3'},
+            {title: 'Titre 2', value: 'h4'},
+            {title: 'Citation', value: 'blockquote'},
           ],
           marks: {
             decorators: [
-              {title: 'Bold', value: 'strong'},
-              {title: 'Italic', value: 'em'},
+              {title: 'Gras', value: 'strong'},
+              {title: 'Italique', value: 'em'},
             ],
             // Ajouter les annotations
             annotations: [
               {
-                title: 'Link',
+                title: 'Lien',
                 name: 'link',
                 type: 'object',
                 fields: [
@@ -48,6 +48,32 @@ export default defineType({
               },
             ],
           },
+        },
+        {
+          type: 'image',
+          options: {
+            hotspot: true,
+          },
+          fields: [
+            {
+              name: 'alt',
+              type: 'string',
+              title: 'Texte alternatif',
+            },
+            {
+              name: 'position',
+              title: 'Position de l’image',
+              type: 'string',
+              options: {
+                list: [
+                  {title: 'Gauche', value: 'left'},
+                  {title: 'Centré', value: 'center'},
+                  {title: 'Droite', value: 'right'},
+                ],
+                layout: 'radio',
+              },
+            },
+          ],
         },
       ],
     }),
