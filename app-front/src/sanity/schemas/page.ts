@@ -7,6 +7,7 @@ import { cardGridSchema } from "./sections/cardGrid";
 import { figureCardSchema } from "./sections/figureCard";
 import { imagesGallerySchema } from "./sections/imageGallery";
 import { textWithImageSchema } from "./sections/textWithImage";
+import { carouselSchema } from "./sections/carousel";
 
 const sectionSchema = z.union([
   teamListSchema,
@@ -16,6 +17,7 @@ const sectionSchema = z.union([
   cardGridSchema,
   figureCardSchema,
   imagesGallerySchema,
+  carouselSchema,
 ]);
 
 export const pageSchema = z.object({

@@ -4,6 +4,7 @@ import { useCallback, useEffect, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 import { Button } from "@/app/_components/Button/Button";
+import { ChevronIcon } from "@/app/_components/Icons/ChevronIcon";
 
 interface CarouselProps {
   children: React.ReactNode;
@@ -14,7 +15,7 @@ interface CarouselProps {
   };
   autoplay?: boolean;
   autoplayDelay?: number;
-  withNavigation?: boolean;
+  navigationPosition?: "bottom" | "over" | "none";
 }
 
 export const Carousel = ({
@@ -22,7 +23,7 @@ export const Carousel = ({
   options = {},
   autoplay = true,
   autoplayDelay = 4000,
-  withNavigation = true,
+  navigationPosition = "bottom",
 }: CarouselProps) => {
   const autoplayPlugin = Autoplay({
     delay: autoplayDelay,
@@ -65,27 +66,37 @@ export const Carousel = ({
   }, [emblaApi]);
 
   return (
-    <div className="w-full">
+    <div className="w-full relative">
       <div className="overflow-hidden" ref={emblaRef}>
         <div className="flex gap-3">{children}</div>
       </div>
 
       {/* Boutons de navigation */}
-      {withNavigation && (
+      {navigationPosition !== "none" && (
         <div className="flex justify-center gap-4 mt-6">
           <Button
             onClick={scrollPrev}
             disabled={!canScrollPrev}
             aria-label="Carousel précédent"
+            className={
+              navigationPosition === "over"
+                ? "absolute top-1/2 left-4 transform -translate-y-1/2 bg-transparent hover:bg-white/40"
+                : ""
+            }
           >
-            ←
+            <ChevronIcon className="rotate-90" />
           </Button>
           <Button
             onClick={scrollNext}
             disabled={!canScrollNext}
             aria-label="Carousel suivant"
+            className={
+              navigationPosition === "over"
+                ? "absolute top-1/2 right-4 transform -translate-y-1/2 bg-transparent  hover:bg-white/40"
+                : ""
+            }
           >
-            →
+            <ChevronIcon className="-rotate-90" />
           </Button>
         </div>
       )}

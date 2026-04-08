@@ -5,7 +5,7 @@ interface Props {
 export const ChevronIcon = ({ className = "" }: Props) => {
   return (
     <svg
-      className={`w-4 h-4 ${className}`}
+      className={`w-6 h-6 ${className}`}
       fill="none"
       stroke="currentColor"
       viewBox="0 0 24 24"

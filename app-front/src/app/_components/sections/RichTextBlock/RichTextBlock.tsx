@@ -5,10 +5,23 @@ import {
 } from "@portabletext/react";
 import { type ReactNode } from "react";
 
-const portableTextComponents: Partial<PortableTextReactComponents> = {
+type LeadingValues =
+  | "none"
+  | "tight"
+  | "snug"
+  | "normal"
+  | "relaxed"
+  | "loose"
+  | number;
+
+const portableTextComponents = (
+  leading: LeadingValues = "normal",
+): Partial<PortableTextReactComponents> => ({
   block: {
     normal: ({ children }: { children?: ReactNode }) => (
-      <p className="mb-2 text-base leading-relaxed">{children}</p>
+      <p className={`mb-2 text-base leading-${leading.toString()}`}>
+        {children}
+      </p>
     ),
     h3: ({ children }: { children?: ReactNode }) => (
       <h3 className="mb-2 text-xl font-bold">{children}</h3>
@@ -90,18 +103,23 @@ const portableTextComponents: Partial<PortableTextReactComponents> = {
       <li className="ml-2 sm:ml-4">{children}</li>
     ),
   },
-};
+});
 
 export function RichTextBlock({
   content,
+  leading = "normal",
   className = "",
 }: {
   content: RichTextBlock["content"];
+  leading?: LeadingValues;
   className?: string;
 }) {
   return (
     <div className={`prose prose-sm max-w-none ${className}`}>
-      <PortableText value={content} components={portableTextComponents} />
+      <PortableText
+        value={content}
+        components={portableTextComponents(leading)}
+      />
     </div>
   );
 }

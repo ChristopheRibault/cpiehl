@@ -32,6 +32,14 @@ export async function getPage(slug: string): Promise<Page> {
           "image": image{asset->{url}},
           "icon": icon{asset->{url}},
         },
+        "slides": slides[]{
+          ...,
+          "image": image{asset->{url}},
+          "content": {
+            ...,
+            "markDefs": markDefs[]{...},
+          }
+        },
         "images": images[]{
           ...,
           "asset": asset->{url}

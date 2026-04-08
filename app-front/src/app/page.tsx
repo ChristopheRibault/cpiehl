@@ -9,9 +9,12 @@ export default async function Homepage() {
   return (
     <main className="min-h-screen w-full">
       {homepage?.banner && (
-        <Carousel withNavigation={false}>
+        <Carousel navigationPosition="over">
           {homepage.banner.map((image, index) => (
-            <div key={image.asset.url} className="flex-[0_0_100%] h-32 md:h-48 lg:h-72 overflow-hidden relative">
+            <div
+              key={image.asset.url}
+              className="flex-[0_0_100%] h-32 md:h-48 lg:h-72 overflow-hidden relative"
+            >
               <Image
                 src={image.asset.url}
                 alt={image.alt || `Banner ${index + 1}`}
@@ -43,9 +46,9 @@ export default async function Homepage() {
       )}
       {homepage?.partnersSection && (
         <Section title={homepage.partnersSection.title}>
-          <Carousel>
+          <Carousel navigationPosition="bottom">
             {homepage.partnersSection.partners?.map((partner) => (
-              <div key={partner._id} >
+              <div key={partner._id}>
                 <PartnerCard partner={partner} />
               </div>
             ))}
@@ -56,7 +59,9 @@ export default async function Homepage() {
         <Section title={homepage.contactSection.title}>
           <div className="flex flex-col gap-8 items-center w-lg">
             <div className="flex flex-col justify-center items-start">
-              <h3 className="text-2xl font-bold mb-2">{homepage.contactSection.contactInfo.name}</h3>
+              <h3 className="text-2xl font-bold mb-2">
+                {homepage.contactSection.contactInfo.name}
+              </h3>
               {homepage.contactSection.contactInfo.address && (
                 <p>{homepage.contactSection.contactInfo.address}</p>
               )}

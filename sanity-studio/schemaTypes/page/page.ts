@@ -29,6 +29,7 @@ export default defineType({
         {type: 'cardGrid'},
         {type: 'figureCard'},
         {type: 'imagesGallery'},
+        {type: 'carousel'},
         {type: 'teamList'},
         {type: 'boardMembersList'},
         // Ajoute d’autres types de sections selon tes besoins

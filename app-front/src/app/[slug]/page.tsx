@@ -11,6 +11,7 @@ import {
   ImageGallery,
 } from "../_components/sections";
 import { Section } from "../_components";
+import CarouselWithCaption from "../_components/sections/Carousel/CarouselWithCaption";
 
 export async function generateStaticParams() {
   const slugs = await getAllPageSlugs();
@@ -63,6 +64,10 @@ export default async function Page({
               );
             case "textWithImage":
               return <TextWithImage key={section._key} section={section} />;
+            case "carousel":
+              return (
+                <CarouselWithCaption key={section._key} carousel={section} />
+              );
             default:
               return null;
           }

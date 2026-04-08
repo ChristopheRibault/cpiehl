@@ -1,5 +1,6 @@
 import boardMembersList from './boardMembersList'
 import cardGrid from './cardGrid'
+import carousel from './carousel'
 import figureCard from './figureCard'
 import imagesGallery from './imagesGallery'
 import richText from './richText'
@@ -14,4 +15,5 @@ export const pageSections = [
   figureCard,
   cardGrid,
   textWithImage,
+  carousel,
 ]
