@@ -14,8 +14,22 @@ export async function getPage(slug: string): Promise<Page> {
         ...,
         "content": content[]{
           ...,
-          "markDefs": markDefs[]{...},
+            "markDefs": markDefs[]{
+              ...,
+              "internalPage": internalPage->{_id, slug, title},
+            },
           "asset": asset->{url}
+        },
+        "text": text{
+          ...,
+          "content": content[]{
+            ...,
+            "markDefs": markDefs[]{
+              ...,
+              "internalPage": internalPage->{_id, slug, title},
+            },
+            "asset": asset->{url}
+          },
         },
         "teamMembers": teamMembers[]{
           ...,
@@ -35,10 +49,6 @@ export async function getPage(slug: string): Promise<Page> {
         "slides": slides[]{
           ...,
           "image": image{asset->{url}},
-          "content": {
-            ...,
-            "markDefs": markDefs[]{...},
-          }
         },
         "images": images[]{
           ...,

@@ -71,21 +71,39 @@ const portableTextComponents = (
       <em className="italic">{children}</em>
     ),
     link: ({ value, children }: { value?: any; children?: ReactNode }) => {
+      const linkType = value?.linkType;
       const href = value?.href;
+      const internalPage = value?.internalPage;
       const external = value?.external;
 
-      if (!href) return <>{children}</>;
+      // Lien externe
+      if (linkType === 'external' && href) {
+        return (
+          <a
+            href={href}
+            target={external ? "_blank" : undefined}
+            rel={external ? "noopener noreferrer" : undefined}
+            className="text-primary underline hover:opacity-80"
+          >
+            {children}
+          </a>
+        );
+      }
 
-      return (
-        <a
-          href={href}
-          target={external ? "_blank" : undefined}
-          rel={external ? "noopener noreferrer" : undefined}
-          className="text-primary underline hover:opacity-80"
-        >
-          {children}
-        </a>
-      );
+      // Lien interne
+      if (linkType === 'internal' && internalPage?.slug?.current) {
+        return (
+          <a
+            href={`/${internalPage.slug.current}`}
+            className="text-primary underline hover:opacity-80"
+          >
+            {children}
+          </a>
+        );
+      }
+
+      // Fallback si données manquantes
+      return <>{children}</>;
     },
     color: ({
       value,

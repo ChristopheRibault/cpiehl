@@ -31,18 +31,50 @@ export default defineType({
                 type: 'object',
                 fields: [
                   {
+                    name: 'linkType',
+                    title: 'Type de lien',
+                    type: 'string',
+                    options: {
+                      list: [
+                        {title: 'Lien externe', value: 'external'},
+                        {title: 'Lien interne', value: 'internal'},
+                      ],
+                      layout: 'radio',
+                    },
+                    validation: (Rule: any) => Rule.required(),
+                  },
+                  {
                     name: 'href',
                     title: 'URL',
                     type: 'url',
+                    hidden: ({parent}: any) => parent?.linkType !== 'external',
                     validation: (Rule: any) =>
-                      Rule.required().uri({
-                        scheme: ['http', 'https', 'mailto', 'tel'],
+                      Rule.custom((value: any, context: any) => {
+                        if (context.parent?.linkType === 'external' && !value) {
+                          return 'URL requise pour un lien externe'
+                        }
+                        return true
+                      }),
+                  },
+                  {
+                    name: 'internalPage',
+                    title: 'Page',
+                    type: 'reference',
+                    to: [{type: 'page'}],
+                    hidden: ({parent}: any) => parent?.linkType !== 'internal',
+                    validation: (Rule: any) =>
+                      Rule.custom((value: any, context: any) => {
+                        if (context.parent?.linkType === 'internal' && !value) {
+                          return 'Page requise pour un lien interne'
+                        }
+                        return true
                       }),
                   },
                   {
                     name: 'external',
                     title: 'Ouvrir dans un nouvel onglet',
                     type: 'boolean',
+                    hidden: ({parent}: any) => parent?.linkType !== 'external',
                   },
                 ],
               },

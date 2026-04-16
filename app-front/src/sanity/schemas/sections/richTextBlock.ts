@@ -1,12 +1,15 @@
 import { colorSchema } from "@/sanity/components/color";
 import { imageSchema } from "@/sanity/components/image";
+import { pageSchema } from "@/sanity/components/page";
 import z from "zod";
 
 // Annotation de lien
 const linkAnnotationSchema = z.object({
   _type: z.literal("link"),
   _key: z.string(),
-  href: z.url(),
+  linkType: z.enum(["external", "internal"]).optional(),
+  href: z.union([z.url(), z.undefined()]).nullable(),
+  internalPage: pageSchema.nullable().optional(),
   external: z.boolean().optional(),
 });
 
