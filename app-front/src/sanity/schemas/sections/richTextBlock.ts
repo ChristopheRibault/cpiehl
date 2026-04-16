@@ -1,3 +1,4 @@
+import { colorSchema } from "@/sanity/components/color";
 import { imageSchema } from "@/sanity/components/image";
 import z from "zod";
 
@@ -7,6 +8,13 @@ const linkAnnotationSchema = z.object({
   _key: z.string(),
   href: z.url(),
   external: z.boolean().optional(),
+});
+
+// Annotation de couleur
+const colorAnnotationSchema = z.object({
+  _type: z.literal("color"),
+  _key: z.string(),
+  colorValue: colorSchema, // Code couleur hex ou rgb
 });
 
 // Span (texte avec marks)
@@ -22,7 +30,9 @@ const blockSchema = z.object({
   _key: z.string(),
   style: z.enum(["normal", "h3", "h4", "blockquote"]).optional(),
   children: z.array(spanSchema),
-  markDefs: z.array(linkAnnotationSchema).optional(),
+  markDefs: z
+    .array(z.union([linkAnnotationSchema, colorAnnotationSchema]))
+    .optional(),
   listItem: z.enum(["bullet", "number"]).optional(), // Pour les listes
   level: z.number().optional(), // Pour les listes imbriquées
 });

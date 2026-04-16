@@ -46,6 +46,18 @@ export default defineType({
                   },
                 ],
               },
+              {
+                title: 'Couleur',
+                name: 'color',
+                type: 'object',
+                fields: [
+                  {
+                    name: 'colorValue',
+                    title: 'Couleur',
+                    type: 'color',
+                  },
+                ],
+              },
             ],
           },
         },

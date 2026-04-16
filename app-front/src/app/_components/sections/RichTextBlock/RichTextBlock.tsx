@@ -1,3 +1,4 @@
+import { Color } from "@/sanity/components/color";
 import { type RichTextBlock } from "@/sanity/schemas/sections/richTextBlock";
 import {
   PortableText,
@@ -85,6 +86,18 @@ const portableTextComponents = (
           {children}
         </a>
       );
+    },
+    color: ({
+      value,
+      children,
+    }: {
+      value?: { colorValue?: Color };
+      children?: ReactNode;
+    }) => {
+      const color = value?.colorValue?.hex;
+      if (!color) return <>{children}</>;
+
+      return <span style={{ color }}>{children}</span>;
     },
   },
   list: {

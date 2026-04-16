@@ -14,7 +14,7 @@ export const textWithImageSchema = z.object({
       url: z.url().optional(),
       file: fileSchema.optional(),
     })
-    .optional(),
+    .nullable(),
 });
 
 export type TextWithImage = z.infer<typeof textWithImageSchema>;
