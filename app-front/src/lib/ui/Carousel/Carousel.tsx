@@ -80,7 +80,7 @@ export const Carousel = ({
             aria-label="Carousel précédent"
             className={
               navigationPosition === "over"
-                ? "absolute top-1/2 left-4 transform -translate-y-1/2 bg-transparent hover:bg-white/40"
+                ? "absolute top-1/2 left-1 md:left-4 transform -translate-y-1/2 bg-transparent hover:bg-white/40"
                 : ""
             }
           >
@@ -92,7 +92,7 @@ export const Carousel = ({
             aria-label="Carousel suivant"
             className={
               navigationPosition === "over"
-                ? "absolute top-1/2 right-4 transform -translate-y-1/2 bg-transparent  hover:bg-white/40"
+                ? "absolute top-1/2 right-1 md:right-4 transform -translate-y-1/2 bg-transparent  hover:bg-white/40"
                 : ""
             }
           >

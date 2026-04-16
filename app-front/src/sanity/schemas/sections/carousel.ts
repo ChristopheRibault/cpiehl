@@ -1,6 +1,5 @@
 import { imageSchema } from "@/sanity/components/image";
 import z from "zod";
-import { richTextBlockSchema } from "./richTextBlock";
 
 export const carouselSchema = z.object({
   _type: z.literal("carousel"),
@@ -10,7 +9,9 @@ export const carouselSchema = z.object({
     .array(
       z.object({
         image: imageSchema,
-        caption: richTextBlockSchema.optional(),
+        category: z.string().optional(),
+        title: z.string().optional(),
+        subtitle: z.string().optional(),
       }),
     )
     .min(1, "Le carrousel doit contenir au moins une slide"),

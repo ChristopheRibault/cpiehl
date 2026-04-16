@@ -24,27 +24,26 @@ export default defineType({
               type: 'image',
             },
             {
-              name: 'caption',
-              title: 'Légende',
-              type: 'richTextBlock',
+              name: 'category',
+              title: 'Catégorie',
+              type: 'string',
+            },
+            {
+              name: 'title',
+              title: 'Titre de la slide',
+              type: 'string',
+            },
+            {
+              name: 'subtitle',
+              title: 'Sous-titre de la slide',
+              type: 'string',
             },
           ],
           preview: {
             select: {
-              caption: 'caption',
-              image: 'image',
-            },
-            prepare({image, caption}) {
-              const captionText = caption?.content
-                ?.filter((block: {_type: string}) => block._type === 'block')
-                ?.map((block: {children: {text: string}[]}) =>
-                  block.children?.map((child) => child.text).join(''),
-                )
-                ?.join(' / ')
-              return {
-                title: captionText.length > 50 ? captionText.substring(0, 47) + '...' : captionText,
-                media: image,
-              }
+              title: 'title',
+              subtitle: 'subtitle',
+              media: 'image',
             },
           },
         },
